@@ -1,0 +1,22 @@
+SENTINEL MARKER - PROPRIETARY LICENSE
+Copyright (c) 2026 Artica (Acheron) — Pozzo dell’eternità. All rights reserved.
+
+Artica (Acheron) — Pozzo dell’eternità is the author and rights holder identified for the original
+Sentinel Marker addon code and project materials, to the extent those rights
+exist and are held by him.
+
+Permission is granted to download, install and use an unmodified copy of this
+addon for personal gameplay. No permission is granted to redistribute,
+republish, sublicense, sell, or distribute modified versions of the addon or
+its original assets without prior written permission from Artica (Acheron) — Pozzo dell’eternità,
+except where applicable law requires otherwise.
+
+Third-party software, names, game assets and APIs remain the property of their
+respective owners. This license does not claim ownership of World of Warcraft,
+Blizzard assets, JST or NSRT, and does not override any third-party licenses.
+The custom logo was generated with AI assistance; this notice claims no rights
+beyond those recognized by applicable law.
+
+THE ADDON IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND. TO THE EXTENT
+PERMITTED BY LAW, THE AUTHOR IS NOT LIABLE FOR CLAIMS OR DAMAGES ARISING FROM
+ITS USE.

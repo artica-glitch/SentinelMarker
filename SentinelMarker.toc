@@ -1,0 +1,27 @@
+## Interface: 120000, 120001, 120005, 120007, 120100
+## Title: Sentinel Marker
+## Notes: Native raid and personal aura stack display. Encounter 3445.
+## Notes-itIT: Stack del raid e personali tramite contenitori aura nativi. Incontro 3445.
+## Notes-deDE: Native Anzeige eigener und Schlachtzug-Aurenstapel. Begegnung 3445.
+## Notes-frFR: Affichage natif des cumuls personnels et du raid. Rencontre 3445.
+## Notes-esES: Acumulaciones personales y de banda con contenedores de auras nativos. Encuentro 3445.
+## Notes-esMX: Acumulaciones personales y de banda con contenedores de auras nativos. Encuentro 3445.
+## Notes-ptBR: Acúmulos pessoais e do raide com contêineres de auras nativos. Encontro 3445.
+## Notes-ruRU: Нативное отображение своих стаков и стаков рейда. Сражение 3445.
+## Notes-koKR: 기본 오라 컨테이너로 개인 및 공격대 중첩 표시. 우두머리 전투 3445.
+## Notes-zhCN: 使用原生光环容器显示个人及团队层数。首领战斗3445。
+## Notes-zhTW: 使用原生光環容器顯示個人及團隊層數。首領戰鬥3445。
+## IconTexture: Interface\AddOns\SentinelMarker\Media\Logo
+## Author: Artica (Acheron) — Pozzo dell’eternità
+## X-Copyright: Copyright (c) 2026 Artica (Acheron) — Pozzo dell’eternità
+## X-License: All Rights Reserved
+## Version: 0.8.2
+## SavedVariables: SentinelMarkersDB
+Version.lua
+Locales.lua
+Settings.lua
+Core.lua
+Auto.lua
+NativeMover.lua
+DisplayProbe.lua
+RaidDisplay.lua

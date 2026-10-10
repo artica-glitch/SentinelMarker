@@ -1,0 +1,136 @@
+Sentinel Marker 0.8.2 - STACK RAID E PERSONALI
+
+INSTALLAZIONE / PASSAGGIO DALLA VECCHIA CARTELLA
+Chiudi completamente WoW. Rimuovi la vecchia cartella Interface/AddOns/EntombedBlue
+(o spostala fuori da AddOns). Estrai SentinelMarker in Interface/AddOns.
+Non tenere attive entrambe le copie. Riavvia WoW.
+Per conservare posizioni e opzioni: a gioco chiuso, fai una copia di backup di
+WTF/Account/<account>/SavedVariables/EntombedBlue.lua e copia quel file con
+il nuovo nome SentinelMarker.lua nella stessa directory SavedVariables.
+Fallo solo per il primo passaggio; non sovrascrivere impostazioni nuove gia' salvate.
+La variabile SentinelMarkersDB mantiene il formato precedente.
+Macro ESMark1/2/3 e identificatori delle scorciatoie restano compatibili.
+I comandi ora iniziano con /sm.
+
+VERSIONE E NSRT
+Versione attuale: 0.8.2. Nel controllo versioni NSRT seleziona tipo Addon e
+inserisci esattamente SentinelMarker (senza spazi).
+La versione ufficiale e' ## Version nel file SentinelMarker.toc; interfaccia,
+/sm version e controlli basati sui metadati leggono lo stesso valore.
+Ad ogni nuova revisione distribuita si incrementa questa versione.
+Il numero identifica la release installata: non aumenta al login o al /reload.
+I compagni devono avere il sistema di controllo versioni attivo per rispondere.
+
+/smconfig o /sm config: impostazioni. Anche Opzioni > AddOn > Sentinel Marker.
+Clic destro sul logo Sentinel apre le impostazioni.
+Interruttori separati salvati per lista raid e stack personali.
+Pulsanti Posiziona per mostrare/nascondere ogni pannello fuori combattimento.
+/smraid: apre/chiude la lista raid per posizionarla trascinando lo sfondo.
+/smview: apre/chiude il tuo numero personale grande, con posizione separata.
+Posizioni salvate. Spostamento fuori combattimento.
+Durante encounter 3445 i pannelli abilitati si aprono; alla fine si chiudono.
+
+La lista contiene fino a 40 membri in ordine raid, in una colonna.
+Barre viola: scala da 0 a 4 stack, gestita direttamente da Blizzard.
+Ogni riga mostra nome, icona effettiva e stack del primo debuff importante
+restituito al contenitore Blizzard. Anche il giocatore e' nella lista raid;
+il riquadro personale mostra inoltre il suo numero ingrandito.
+Non serve installare questo addon sui compagni: i dati sono quelli esposti
+dal client ai contenitori nativi associati a raid1..raid40.
+Il riquadro personale funziona anche fuori dal raid, quando aperto a mano.
+La lista del gruppo non supporta party1..4: questa versione e' per raid.
+
+LIMITI
+Il filtro HARMFUL|IMPORTANT e' quello del modulo JST fornito, NON una
+ricerca esclusiva di 1284590. Anche altri debuff importanti possono comparire:
+controllare l'icona reale.
+Vuoto non significa zero stack: assenza di aura idonea, dati non disponibili
+o limiti del client possono lasciare vuota una riga.
+Gli elementi vengono predisposti prima del combattimento: eventuali cambi
+di roster e nomi vengono applicati quando l'accesso ai frame torna consentito.
+Il codice non legge, confronta, ordina o somma le stack. Blizzard scrive
+il numero nei testi tramite SetApplicationCount. Nessuna scelta automatica
+di macro o marker e nessun annuncio automatico aggiunto.
+Modulo AUTO precedente disattivato di default. Pulsanti /sm invariati.
+
+Test locali del contratto API e degli eventi superati; resa e restrizioni
+reali durante il boss da verificare in WoW.
+
+ASPETTO 0.7.7
+Personale: quadrato nero 48x48, solo numero bianco, nessun titolo o icona.
+Lista: righe compatte 320x22 con 2 pixel di spazio, senza intestazione o footer.
+Icona debuff, ruolo, nome colorato per classe, barra viola e stack a destra.
+Colori/ruoli aggiornati fuori combattimento quando disponibili.
+Trascina lo sfondo dei pannelli per posizionarli da /smconfig.
+
+VISIBILITA 0.7.7
+Il fondo del quadratino e tutta la grafica di ogni riga (nome incluso)
+appartengono al pulsante aura nativo. Quando Blizzard nasconde l'aura,
+scompare la sua grafica. Nessun fondo vuoto o area che intercetta click
+resta visibile/attiva in modalita incontro.
+La lista resta visibile per i compagni che hanno ancora un'aura idonea.
+Se nessuno ha aure idonee, tutta la lista risulta invisibile.
+In Posiziona resta uno sfondo trasparente trascinabile senza aura.
+Il filtro e' ancora HARMFUL|IMPORTANT: altri debuff importanti possono
+mantenere la visualizzazione anche dopo la rimozione di Helical Toxins.
+Le righe sono collegate in catena: il layout nativo compatta quelle rimaste.
+Nomi, ruoli e disposizione vengono aggiornati fuori combattimento.
+
+CORREZIONE 0.7.7
+I contenitori aura ora discendono da ancoraggi senza script o input mouse.
+Le maniglie di trascinamento sono frame separati sotto UIParent, visibili
+solo quando si posiziona fuori combattimento.
+Nome e ruolo sono creati direttamente per ciascun pulsante aura nativo:
+nessuna chiamata SetParent per trasferire frame esistenti nei pulsanti.
+Gestiti tutti i pulsanti del pool, non solo l'ultimo creato.
+La grafica continua a scomparire con l'aura senza leggerne il valore.
+
+CORREZIONE 0.7.7
+Controllo C_Secrets.ShouldAurasBeSecret oltre al combat lockdown.
+Prima di aggiornare nome/ruolo si verifica CanBeAccessedInContext sul
+pulsante nativo. Aggiornamenti rinviati durante restrizioni, anche da morti.
+Quando l'accesso torna consentito, il roster viene aggiornato automaticamente.
+Nessuna lettura di stack o tentativo di aggirare oggetti forbidden.
+
+COMPATTAZIONE 0.7.7
+Ogni AuraContainer e' ancorato al fondo del precedente, come in JST.
+SetCollapsesLayout elimina l'ingombro dell'aura scomparsa; le righe
+successive risalgono automaticamente. Altezza layout 25, grafica 22,
+collegamento +1: niente slot vuoti fissi.
+Nessuna lettura di visibilita, altezza protetta o stack per decidere chi mostrare.
+Include la correzione delle restrizioni residue quando il personaggio e' morto.
+
+CORREZIONE MACRO 0.7.7
+I pulsanti richiamano ESMark1/2/3 per nome, non per indice numerico.
+La verifica tollera ritorni a capo e spazi finali nel testo salvato.
+Sincronizzazione dopo PLAYER_LOGIN, ingresso nel mondo e apertura pannello.
+Non cancella macro, non cambia macro omonime con contenuto diverso.
+/reload fuori combattimento: non e' necessario eliminare le macro esistenti.
+/sm setup consente di ricontrollare manualmente il collegamento.
+Il contenuto YELL e i limiti del client restano invariati.
+
+IDENTITA E LICENZA 0.8.2
+Logo personalizzato nella minimappa, elenco addon e macro ESMark1/2/3 gestite.
+Titoli: Sentinel Marker seguito dalla versione letta dal TOC.
+Autore e titolare indicato: Artica (Acheron) — Pozzo dell’eternità. Licenza proprietaria, tutti i diritti
+riservati; vedere LICENSE.txt. I diritti di terzi restano ai rispettivi titolari.
+Logo generato con assistenza IA; prompt conservato in Media/Logo-Prompt.txt.
+
+LINGUE 0.8.2
+Interfaccia e messaggi selezionati automaticamente tramite GetLocale().
+Traduzioni complete per itIT, enUS, deDE, frFR, esES, esMX, ptBR, ruRU, koKR,
+zhCN e zhTW. enGB usa inglese; ptPT usa portoghese; fallback inglese.
+I comandi /sm, /smconfig, /smraid, /smview, /smauto e i nomi delle macro
+restano uguali in ogni lingua. Logo e nome Sentinel Marker non cambiano.
+Licenza legale nel file LICENSE.txt; intestazione con il nome di gioco richiesto.
+
+COMANDI 0.8.2
+/sm, /smconfig, /smraid, /smview, /smauto sostituiscono i vecchi comandi.
+/sm config, /sm setup, /sm reset e /sm version sono disponibili.
+La lingua viene rilevata a ogni caricamento: dopo un cambio della lingua
+del client, riavvia il gioco. Non serve scegliere la lingua nelle opzioni.
+
+POSIZIONAMENTO 0.8.2
+Il contatore personale e la maniglia appaiono davanti alle impostazioni.
+La maniglia ha un bordo azzurro, visibile anche senza debuff. Trascinala
+per salvare la posizione; premi di nuovo Posiziona per nasconderla.

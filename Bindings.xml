@@ -1,0 +1,5 @@
+<Bindings>
+  <Binding name="CLICK EntombedBlue1:LeftButton" header="ENTOMBEDBLUE" runOnUp="true" category="ADDONS" />
+  <Binding name="CLICK EntombedBlue2:LeftButton" runOnUp="true" category="ADDONS" />
+  <Binding name="CLICK EntombedBlue3:LeftButton" runOnUp="true" category="ADDONS" />
+</Bindings>
